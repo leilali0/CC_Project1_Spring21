@@ -1,10 +1,14 @@
+let ming;
 
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  ming = new Person(100, 100, 1, 1);
 }
 
 function draw() {
-  background(0);
-  rect(30, 20, 55, 55);
+  background(255);
+  fill(0);
+  //rect(100,100,100,100);
+  ming.makeEye();
 }
