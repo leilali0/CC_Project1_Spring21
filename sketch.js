@@ -1,9 +1,10 @@
 let ming;
-
+let quizA;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  ming = new Person(300, 300, 200, 200);
+  ming = new Person(800, 300, 1, false);
+  quizA = new ReportCard(450, 250, 1, 'Quiz');
 }
 
 function draw() {
@@ -11,4 +12,6 @@ function draw() {
   fill(0);
 
   ming.display();
+
+  quizA.display();
 }
