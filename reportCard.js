@@ -13,6 +13,7 @@ class ReportCard{
 	makeReportCard(){
 		//paper
 		noFill();
+		strokeWeight(4);
 		stroke(0);
 		rect(this.x, this.y, 200 * this.s, 300 * this.s);
 
