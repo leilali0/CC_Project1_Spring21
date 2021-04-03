@@ -9,11 +9,11 @@ class Person {
 		this.v = new createVector();
 	}
 
-	setVectorP(xPos, yPos){
+	setVectorP(xPos, yPos){ //change the position 
 		this.p.set(xPos, yPos);
 	}
 
-	setVectorV(xSpeed, ySpeed){
+	setVectorV(xSpeed, ySpeed){ // change the velocity 
 		this.v.set(xSpeed, ySpeed); 
 	}
 
@@ -34,7 +34,7 @@ class Person {
 	}
 	
 	move(x, y, size){ //move to x, y point
-		if(this.p.x <= x){
+		if(this.p.x <= x){ // change velocity to 0 when it reaches desired position 
 			this.v.x = 0;
 		} 
 		if (this.p.y <= y){
@@ -48,7 +48,7 @@ class Person {
 		}
 	}
 
-	moveDown(x, y){
+	moveDown(x, y){ // same as move, but different direction 
 		if(this.p.x >= x){
 			this.v.x = 0;
 		} 
@@ -66,11 +66,11 @@ class Person {
 		this.makeBody();
 	}
 
-	update(){
+	update(){ //change the mood to good
 		this.m = true;
 	}
 
-	updateBad(){
+	updateBad(){ // change the mood to bad 
 		this.m = false;	
 	}
 

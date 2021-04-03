@@ -23,13 +23,14 @@ function setup() {
   	mingA.display();
   	quiz.display();
 
-  	if(step == 1){ //don't want them to loop 
+  	if(step == 1){ //don't want this to loop 
   		setTimeout(sceneOne, 1200);
   		print('Press any key to start');
 	} 
 }
 
 function keyPressed(){
+	//press to start the animation, so audience are more prepared 
 	if(step == 1){
 		step++;
 		quiz.setVectorV(5, 0);
@@ -58,7 +59,7 @@ function draw() {
 			quiz.setVectorV(5, 0);
 			mingA.setVectorV(5, 0);
  		}
- 	} else if(step == 3){ //walk into another room 
+ 	} else if(step == 3){ //walk into the another room 
  	    background(255);
  		mingA.move(1300, 300, 1);
  		mingA.display();
@@ -67,14 +68,14 @@ function draw() {
  		quiz.move(950, 250, 1);
  		quiz.display();
 
- 		makeWall();
+ 		makeWall(); //make display wall
 
- 		if(mingA.check()){
+ 		if(mingA.check()){ // prep for the next step
  			step++;
  			quiz.setVectorV(3, 0.8);
 			mingA.setVectorV(5, 0.8);
  		}
- 	} else if (step == 4){
+ 	} else if (step == 4){ //put quiz on the wall
  		background(255);
  		makeWall();
  		quiz.changeGrade();
@@ -89,7 +90,7 @@ function draw() {
  		}
  	} else if (step == 5){
  		background(255);      
- 		makeWallTwo();
+ 		makeWallTwo(); // make the second version of the wall
  		mingA.move(400, 600, 1);
  		mingA.display();
 
@@ -117,7 +118,7 @@ function draw() {
  			gpa();
  			step++;
  		}
- 	} else if (step == 8){
+ 	} else if (step == 8){ // has ming turn around and smirk 
  		background(255);
  		makeWallTwo();
  		gpa();
@@ -143,7 +144,7 @@ function makeWall() { //original wall
 	}
 }
 
-function sceneOne() {
+function sceneOne() { // changing mood and getting an idea
 	background(255);
 	quiz.display();
   	mingA.update();
@@ -152,9 +153,9 @@ function sceneOne() {
   	setTimeout(light, 1000);
 }
 
-function light() {idea.lightUp()}
+function light() {idea.lightUp()} //light up function for delay 
 
-function gpa() {
+function gpa() { // dispaly the gpa phrase 
 	textSize(40);
 	stroke(255, 0, 0);
 	fill(255,0,0);

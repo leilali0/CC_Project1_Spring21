@@ -9,7 +9,7 @@ class ReportCard{
 		this.v = new createVector();
 	}
 
-	changeGrade(){
+	changeGrade(){ // wirte another grade directly on top of the first one 
 		textSize(50 * this.s);
 		strokeWeight(1 * this.s)
 		stroke(255, 0, 0);
@@ -21,15 +21,15 @@ class ReportCard{
 		this.makeReportCard();
 	}
 
-	setVectorP(xPos, yPos){
+	setVectorP(xPos, yPos){ //change the position
 		this.p.set(xPos, yPos);
 	}
 
-	setVectorV(xSpeed, ySpeed){
+	setVectorV(xSpeed, ySpeed){ // change the speed
 		this.v.set(xSpeed, ySpeed); 
 	}
 
-	move(x, y, size){ 
+	move(x, y, size){ //move the report around using velocity and position vectors 
 		if(this.p.x <= x){
 			this.v.x = 0;
 		} 
