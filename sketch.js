@@ -72,8 +72,8 @@ function draw() {
 
  		if(mingA.check()){ // prep for the next step
  			step++;
- 			quiz.setVectorV(3, 0.8);
-			mingA.setVectorV(5, 0.8);
+ 			quiz.setVectorV(3, 0.6);
+			mingA.setVectorV(5, 0.6);
  		}
  	} else if (step == 4){ //put quiz on the wall
  		background(255);
@@ -86,7 +86,7 @@ function draw() {
 
  		if(quiz.check()){
  			step = 5;
- 			mingA.setVectorV(5, 0.8);
+ 			mingA.setVectorV(5, 0);
  		}
  	} else if (step == 5){
  		background(255);      
