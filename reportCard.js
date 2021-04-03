@@ -32,7 +32,8 @@ class ReportCard{
 	move(x, y, size){ 
 		if(this.p.x <= x){
 			this.v.x = 0;
-		} else if (this.p.y <= y){
+		} 
+		if (this.p.y <= y){
 			this.v.y = 0;
 		}
 
@@ -43,15 +44,15 @@ class ReportCard{
 		}
 	}
 
-	/*check(x, y){
-		if(this.p.x <= x){
-		//I only need to move it from right to left, so I did not consider other situations 
-			return false;
-		} else {
+	check(){ //slightly different (maybe better checking machinism)
+		if(this.v.x == 0 && this.v.y == 0){ // check if the move function change the velocity to zero. 
 			return true;
+		} else {
+			return false;
 		}
-	}*/
+	}
 
+//I didn't change the questions and answers for the quizes because of how this class was built.
 	makeReportCard(){
 		//paper
 		noFill();
@@ -105,7 +106,7 @@ class ReportCard{
 		textSize(22* this.s);
 		stroke(0,0,255);
 		fill(0, 0, 255);
-		text('Answer: bule', this.p.x + 35 * this.s, this.p.y + 200 * this.s);
+		text('Answer: blue', this.p.x + 35 * this.s, this.p.y + 200 * this.s);
 		//X
 		textSize(32* this.s);
 		stroke(255, 0, 0);

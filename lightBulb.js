@@ -29,8 +29,9 @@ class Lightbulb {
 	lines(){ 
 		stroke(0);
 		strokeWeight(5);
-		translate(280, -220);//translate to the right place 
+		translate(280, -200);//translate to the right place 
 		translate(width/2, height/2); //translate to center to make lines 
+		//this doesn't always line up, I 
   		rotate(PI/3);
   		for (let i = 0; i <20; i += 2){
     		rotate(PI / 6);

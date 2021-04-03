@@ -5,9 +5,9 @@ let names = ['Final', 'Test', 'Exam', 'Midterm'];
 let exams = [];
 
 function setup() {
-  	step = 0;
+  	step = 1;
 
-   	createCanvas(windowWidth, windowHeight);
+   	createCanvas(1440, 787);
   	mingA = new Person(800, 300, 1, false);
   	quiz = new ReportCard(450, 250, 1, 'Quiz');
 
@@ -22,44 +22,45 @@ function setup() {
 
   	mingA.display();
   	quiz.display();
+
+  	if(step == 1){ //don't want them to loop 
+  		setTimeout(sceneOne, 1200);
+  		print('Press any key to start');
+	} 
 }
 
 function keyPressed(){
-	step++;
-
-	if(step == 1){ //don't want them to loop 
-  		setTimeout(sceneOne, 500);
-	} else if(step == 2){
+	if(step == 1){
+		step++;
 		quiz.setVectorV(5, 0);
 		mingA.setVectorV(5, 0);
-	}else if (step == 3){
-		mingA.setVectorP(windowWidth + 350, 300); //start out of the canvas 
-		quiz.setVectorP(windowWidth, 250);
-		quiz.setVectorV(5, 0);
-		mingA.setVectorV(5, 0);
-	}else if (step == 4){
-		quiz.setVectorV(5, 2);
-		mingA.setVectorV(8, 2);
-	}else if (step == 5){
-		mingA.setVectorV(8, 2);
+	} else if (step > 8) {
+		step = 1;
 	}
 }
 
 function draw() {
-	//scene 1 move out of frame
-	if(step == 2){
+	if(step == 2){ // move out of frame
+		ellipse(200, 200, 80, 80);
  		background(255);
  		quiz.display();
  		mingA.display();
 
- 		mingA.move(-110, 300);
+ 		mingA.move(-110, 300, 1);
  		mingA.display();
 
  		quiz.move(-300, 250, 1);
  		quiz.display();
- 	} else if(step == 3){
+ 		if(mingA.check()){ // prep for step 3
+ 			step++;
+ 			mingA.setVectorP(windowWidth + 350, 300); //start out of the canvas 
+			quiz.setVectorP(windowWidth, 250);
+			quiz.setVectorV(5, 0);
+			mingA.setVectorV(5, 0);
+ 		}
+ 	} else if(step == 3){ //walk into another room 
  	    background(255);
- 		mingA.move(1300, 300);
+ 		mingA.move(1300, 300, 1);
  		mingA.display();
 
  		quiz.changeGrade();
@@ -67,6 +68,12 @@ function draw() {
  		quiz.display();
 
  		makeWall();
+
+ 		if(mingA.check()){
+ 			step++;
+ 			quiz.setVectorV(3, 0.8);
+			mingA.setVectorV(5, 0.8);
+ 		}
  	} else if (step == 4){
  		background(255);
  		makeWall();
@@ -75,34 +82,56 @@ function draw() {
  		mingA.move(870, 200, 0.5);
  		mingA.display();
  		quiz.display();
+
+ 		if(quiz.check()){
+ 			step = 5;
+ 			mingA.setVectorV(5, 0.8);
+ 		}
  	} else if (step == 5){
- 		background(255);
+ 		background(255);      
  		makeWallTwo();
- 		mingA.move(400, 600);
+ 		mingA.move(400, 600, 1);
  		mingA.display();
+
+ 		if(mingA.check()){
+ 			step++;
+ 			mingA.setVectorV(0, 5);
+ 		}
  	} else if (step == 6) {
  		background(255);
  		makeWallTwo();
- 		mingA.setVectorV(0, 5);
  		mingA.moveDown(400, 400);
  		mingA.display();
+
+ 		if(mingA.check()){
+ 			step++;
+ 			mingA.setVectorV(5, 0);
+ 		}
  	} else if (step == 7){
  		background(255);
  		makeWallTwo();
- 		gpa();
- 		mingA.setVectorV(5, 0);
- 		mingA.moveDown(600, 400);
+ 		mingA.moveDown(650, 400);
  		mingA.display();
+
+ 		if(mingA.check()){
+ 			gpa();
+ 			step++;
+ 		}
+ 	} else if (step == 8){
+ 		background(255);
+ 		makeWallTwo();
+ 		gpa();
+ 		mingA.turn();
  	}
 }
 
-function makeWallTwo(){
+function makeWallTwo(){ //new quiz added
 	makeWall();
 	quiz.changeGrade();
 	quiz.display();
 }
 
-function makeWall() {
+function makeWall() { //original wall 
  	stroke(0);
  	strokeWeight(2);
 	noFill();
@@ -120,14 +149,14 @@ function sceneOne() {
   	mingA.update();
     mingA.display();
     idea.makeShape();
-  	setTimeout(one, 1000);
+  	setTimeout(light, 1000);
 }
 
-function one() {idea.lightUp()}
+function light() {idea.lightUp()}
 
 function gpa() {
 	textSize(40);
 	stroke(255, 0, 0);
 	fill(255,0,0);
-	text('GPA 3.0', 400, 500);
+	text('GPA 3.0 -->', 360, 500);
 }
